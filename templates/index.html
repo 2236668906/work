@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../static/layui/css/layui.css">
+
+<body style="margin-top: 5%;margin-right: 5%;">
+<div class="layui-row">
+    <div class="layui-col-xs12 layui-col-md3">
+        <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">添加预约</li>
+            <li>添加资料</li>
+            <li>预约进度</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">货单账号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入货单账号"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">货单密码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="password" lay-verify="required" lay-reqtext="密码是必填项，岂能为空？"
+                                placeholder="请输入货单密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">司机资料</label>
+                            <div class="layui-input-block">
+                                <select id="users" lay-filter="users">
+                                <option value="0" >请选择预约司机</option>
+                                    {% for user in users %}
+                                    <option value="{{ user.idnum }}">{{ user.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">预约重量</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="weight" lay-verify="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">预约车牌</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="weight" lay-verify="" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">预约时间</label>
+                            <div class="layui-input-block">
+                                <select name="interest" lay-filter="aihao">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row">
+                        <div class="layui-col-xs10 layui-col-xs-offset2">
+                            <button type="button" class="layui-btn layui-btn-normal" id="now">今天</button>
+                            <button type="button" class="layui-btn layui-btn-normal" id="next">明天</button>
+                            <button type="button" class="layui-btn layui-btn-normal">提交预约</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">司机资料</label>
+                            <div class="layui-input-block">
+                                <select id="user1" lay-filter="user1">
+                                <option value="0" >请选择要编辑的资料</option>
+                                    {% for user in users %}
+                                    <option value="{{ user.name }}">{{ user.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">司机姓名</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="name" lay-verify="title" autocomplete="off" placeholder="请输入货单账号"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号码</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="phone" lay-verify="title" autocomplete="off" placeholder="请输入货单账号"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">车牌号码</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="card1" lay-verify="title" autocomplete="off" placeholder="请输入货单账号"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">司机身份证</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="idnum" lay-verify="required" lay-reqtext="密码是必填项，岂能为空？"
+                                placeholder="请输入货单密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-row">
+                        <div class="layui-col-xs8 layui-col-xs-offset3">
+                            <button type="button" class="layui-btn layui-btn-normal" id="adduser">添加资料</button>
+                            <button type="button" class="layui-btn layui-btn-normal" id="deluser">删除资料</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">内容3</div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+</body>
+<script src="../static/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate', 'element','jquery'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate,
+            element = layui.element
+            ,$=layui.jquery;
+        form.on("select(user1)",function (data) {
+            console.log(data)
+            $.get('/getuser?name='+data.value,function (data,status) {
+                if(status=='success' && data.code==0){
+                    $('#name').val(data.data.name),
+                        $('#phone').val(data.data.phone),
+                        $('#card1').val(data.data.card),
+                        $('#idnum').val(data.data.idnum);
+                }
+            })
+
+        })
+
+        $('#adduser').on("click",function () {
+            var name=$('#name').val(),
+                phone=$('#phone').val(),
+                card=$("#card1").val(),
+                idnum=$("#idnum").val();
+            $.post('/adduser',data={name:name,phone:phone,card:card,idnum:idnum},function (data,status) {
+                layer.msg(data.info)
+            })
+        });
+
+        $('#deluser').on("click",function () {
+            var name=$("#user1 option:checked").attr('value');
+            $.post('/deluser',data={name:name},function (data,status) {
+                layer.msg(data.info)
+            })
+        });
+
+        $('#now').on("click",function () {
+            var name=$("#user1 option:checked").attr('value');
+            $.post('/deluser',data={name:name},function (data,status) {
+                layer.msg(data.info)
+            })
+        });
+
+        $('#next').on("click",function () {
+            var name=$("#user1 option:checked").attr('value');
+            $.post('/deluser',data={name:name},function (data,status) {
+                layer.msg(data.info)
+            })
+        });
+
+    })
+</script>
+
+</html>
